@@ -1,0 +1,9 @@
+test it produces a 5 digit number
+run it one, then verify it doesn't happen twice
+
+
+array[43] = "a"
+
+def decrypt
+  encrypt(-1)
+end
