@@ -1,56 +1,53 @@
 class RotationGenerator
-  attr_accessor :date, :key                                       # => nil
-  attr_reader :a_rotation, :b_rotation, :c_rotation, :d_rotation  # => nil
+  attr_accessor :date, :key  # => nil
+  # attr_reader :a_rotation, :b_rotation, :c_rotation, :d_rotation  # => nil
 
   def initialize(key = rand(0..99999), date = Time.new.strftime("%d""%m""%y"))
-    @key = key.to_s                                                             # => "34916"
-    @date = date.to_i                                                           # => 121215
+    @key = key.to_s                                                             # => "11425"
+    @date = date.to_i                                                           # => 121315
+    date_offset                                                              # => "14717329225"
   end
 
-  def key_to_four_numbers
-    @a_key_rotation = @key[0..1].to_i  # => 34
-    @b_key_rotation = @key[1..2].to_i  # => 49
-    @c_key_rotation = @key[2..3].to_i  # => 91
-    @d_key_rotation = @key[3..4].to_i  # => 16
+  def a_key_rotation
+    @key[0..1].to_i   # => 11
+  end
+
+  def b_key_rotation
+    @key[1..2].to_i   # => 14
+  end
+
+  def c_key_rotation
+    @key[2..3].to_i   # => 42
+  end
+
+  def d_key_rotation
+    @key[3..4].to_i   # => 25
   end
 
   def date_offset
-    @offset_date = (@date ** 2).to_s  # => "14693076225"
+    (@date ** 2).to_s  # => "14717329225", "14717329225", "14717329225", "14717329225", "14717329225"
   end
 
   def a_rotation
-    @a_key_rotation + @offset_date[-4].to_i  # => 40
-    # 50
+    a_key_rotation + date_offset[-4].to_i  # => 20
   end
 
   def b_rotation
-    # @b_key_rotation + @offset_date[-3].to_i  # => 78
-    50            # => 50
+    b_key_rotation + date_offset[-3].to_i  # => 16
   end
 
   def c_rotation
-    # @c_key_rotation + @offset_date[-2].to_i  # => 66
-    50            # => 50
+    c_key_rotation + date_offset[-2].to_i  # => 44
   end
 
   def d_rotation
-    # @d_key_rotation + @offset_date[-1].to_i  # => 49
-    50            # => 50
+    d_key_rotation + date_offset[-1].to_i  # => 30
   end
 
-  def key_with_date_offset
-    @a_rotation = (@a_key_rotation + @offset_date[-4].to_i)
-    @b_rotation = (@b_key_rotation + @offset_date[-3].to_i)
-    @c_rotation = (@c_key_rotation + @offset_date[-2].to_i)
-    @d_rotation = (@d_key_rotation + @offset_date[-1].to_i)
-  end
 end
 
-r = RotationGenerator.new  # => #<RotationGenerator:0x007fc8010965c0 @key="34916", @date=121215>
-
-r.key_to_four_numbers  # => 16
-r.date_offset          # => "14693076225"
-r.a_rotation           # => 40
-r.b_rotation           # => 50
-r.c_rotation           # => 50
-r.d_rotation           # => 50
+r = RotationGenerator.new(11425, 121315)  # => #<RotationGenerator:0x007f933304ab28 @key="11425", @date=121315>
+r.a_rotation                              # => 20
+r.b_rotation                              # => 16
+r.c_rotation                              # => 44
+r.d_rotation                              # => 30
