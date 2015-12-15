@@ -1,3 +1,4 @@
+require_relative 'test_helper'
 require 'Minitest'
 require 'Minitest/pride'
 require 'Minitest/autorun'
@@ -39,6 +40,15 @@ class EncryptorTest < Minitest::Test
     assert_equal [[8, 19, 36, 22],[0, 18, 36, 0], [11, 11, 36,
       0], [36, 3, 17, 4], [0, 12]], e.character_value_into_groups_of_four
   end
+
+  # def test_it_is_pulling_final_encryptor_values_from_the_generator
+  #   e = Encryptor.new("it was all a dream", 11425, 141215)
+  #   e.add_final_encryptor_values
+  #   assert_equal 17, e.a_final_rotation
+  #   assert_equal 16, e.add_final_encryptor_values.b_final_rotation
+  #   assert_equal 44, e.add_final_encryptor_values.c_final_rotation
+  #   assert_equal 30, e.add_final_encryptor_values.d_final_rotation
+  # end
 
   def test_it_can_add_final_encryptor_values
     e = Encryptor.new("it was all a dream", 11425, 141215)

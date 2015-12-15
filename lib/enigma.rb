@@ -1,5 +1,6 @@
 require_relative 'encryptor'
 require_relative 'crack'
+require_relative 'decryptor'
 
 class Enigma
   attr_reader :message, :date
@@ -12,8 +13,8 @@ class Enigma
     Encryptor.new(message, key, date).encrypt_values_to_characters
   end
 
-  def decrypt
-
+  def decrypt(message, key, date = Time.new.strftime("%d""%m""%y"))
+    Decryptor.new(message, key, date).convert_values_to_letters
   end
 
   def crack(message, date = Time.new.strftime("%d""%m""%y"))
@@ -24,9 +25,5 @@ end
 
 e = Enigma.new
 message = "this is a test..end.."
-e.encrypt(message)
-
-#a key @key[0..1].to_i
-#b key 1..2
-#c key 2..3
-#d key 3..4
+e.encrypt(message, 43523, 121515)
+e.decrypt("2fxhgg7zj8861rn0nls0h", 43523, 121515)

@@ -1,12 +1,12 @@
-require_relative 'rotation_generator'  # => true
+require_relative 'rotation_generator'
 
 class Encryptor
-  attr_reader :message, :rotation  # => nil
+  attr_reader :message, :rotation, :character_map
 
   def initialize(message, key, date)
     @message = message.chars
     @rotation = RotationGenerator.new(key, date)
-    create_character_map
+    @character_map = create_character_map
   end
 
   def create_character_map
@@ -17,7 +17,7 @@ class Encryptor
 
   def find_message_character_values
     @message.map do |character|
-      create_character_map.index(character)
+      character_map.index(character)
     end
   end
 
@@ -53,16 +53,16 @@ class Encryptor
 
   def encrypt_values_to_characters
     final_message = add_final_encryptor_values.map do |value|
-      create_character_map[value]
+      character_map[value]
     end
     final_message.join
   end
 end
 
-# #
-# test = Encryptor.new("..en")                                   # => #<Encryptor:0x007fb9ba911fb0 @message=[".", ".", "e", "n"], @rotation=#<RotationGenerator:0x007fb9ba911ce0 @key="11425", @date=141215>>
-# test.create_character_map                                      # => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", ".", ","]
-# test.find_message_character_values                             # => [37, 37, 4, 13]
-# test.character_value_into_groups_of_four                       # => [[37, 37, 4, 13]]
-# test.add_final_encryptor_values                                # => [15, 14, 9, 4]
-# test.encrypt_values_to_characters                              # => "poje"
+#
+test = Encryptor.new("this message is a test..end..", 69542, 141215)
+test.create_character_map
+test.find_message_character_values
+test.character_value_into_groups_of_four
+test.add_final_encryptor_values
+test.encrypt_values_to_characters

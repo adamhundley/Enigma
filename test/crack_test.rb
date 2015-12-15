@@ -1,3 +1,4 @@
+# require 'test_helper'
 require 'Minitest'
 require 'Minitest/pride'
 require 'Minitest/autorun'
@@ -47,7 +48,7 @@ class CrackTest < Minitest::Test
 
   def test_it_subtracts_date_from_values
     c = Crack.new("pojeuod", 141215)
-    assert_equal [11, 14, 42, 25], c.subtract_date_from_values
+    assert_equal [11, 14, 3, 25], c.subtract_date_from_values
   end
 
   def test_it_can_create_key_from_values
