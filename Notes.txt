@@ -7,3 +7,13 @@ array[43] = "a"
 def decrypt
   encrypt(-1)
 end
+
+
+
+crack (figure out a finite number and then you can crack the whole message)
+
+'abcdefg'
+'..end..'
+
+'abcdefghijk'
+'????..end..'

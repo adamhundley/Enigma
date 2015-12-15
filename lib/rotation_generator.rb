@@ -1,11 +1,10 @@
 class RotationGenerator
   attr_accessor :date, :key  # => nil
-  # attr_reader :a_rotation, :b_rotation, :c_rotation, :d_rotation  # => nil
 
-  def initialize(key = rand(0..99999), date = Time.new.strftime("%d""%m""%y"))
-    @key = key.to_s                                                             # => "11425"
-    @date = date.to_i                                                           # => 121315
-    date_offset                                                              # => "14717329225"
+  def initialize(key, date)
+    @key = key.to_s          # => "11425"
+    @date = date.to_i        # => 141215
+    date_offset              # => "19941676225"
   end
 
   def a_key_rotation
@@ -25,11 +24,11 @@ class RotationGenerator
   end
 
   def date_offset
-    (@date ** 2).to_s  # => "14717329225", "14717329225", "14717329225", "14717329225", "14717329225"
+    (@date ** 2).to_s  # => "19941676225", "19941676225", "19941676225", "19941676225", "19941676225"
   end
 
   def a_rotation
-    a_key_rotation + date_offset[-4].to_i  # => 20
+    a_key_rotation + date_offset[-4].to_i  # => 17
   end
 
   def b_rotation
@@ -46,8 +45,8 @@ class RotationGenerator
 
 end
 
-r = RotationGenerator.new(11425, 121315)  # => #<RotationGenerator:0x007f933304ab28 @key="11425", @date=121315>
-r.a_rotation                              # => 20
-r.b_rotation                              # => 16
-r.c_rotation                              # => 44
-r.d_rotation                              # => 30
+# r = RotationGenerator.new(11425, 141215)  # => #<RotationGenerator:0x007fcc9c06b0d8 @key="11425", @date=141215>
+# r.a_rotation                              # => 17
+# r.b_rotation                              # => 16
+# r.c_rotation                              # => 44
+# r.d_rotation                              # => 30

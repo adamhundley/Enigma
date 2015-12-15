@@ -1,11 +1,11 @@
-require_relative 'rotation_generator'
+require_relative 'rotation_generator'  # => true
 
 class Encryptor
-  attr_reader :message, :rotation
+  attr_reader :message, :rotation  # => nil
 
-  def initialize(message)
+  def initialize(message, key, date)
     @message = message.chars
-    @rotation = RotationGenerator.new(11425, 121315)
+    @rotation = RotationGenerator.new(key, date)
     create_character_map
   end
 
@@ -14,7 +14,6 @@ class Encryptor
     s t u v w x y z 0 1 2 3 4 5 6 7 8 9)
     character_map << " " << "." << ","
   end
-
 
   def find_message_character_values
     @message.map do |character|
@@ -30,7 +29,7 @@ class Encryptor
     character_values_in_group_of_four
   end
 
-  def add_final_encryptor_values
+  def add_final_encryptor_values   # rotations = [keys, offsets].transpose.map {|rotation| rotation.reduce(:+)}
     final_encryptor_values = []
     character_value_into_groups_of_four.each do |group|
       group.each_with_index do |character, index|
@@ -56,13 +55,14 @@ class Encryptor
     final_message = add_final_encryptor_values.map do |value|
       create_character_map[value]
     end
-    final_message
+    final_message.join
   end
 end
 
-test = Encryptor.new("ball on tester")
-test.create_character_map
-test.find_message_character_values
-test.character_value_into_groups_of_four
-test.add_final_encryptor_values
-test.encrypt_values_to_characters
+# #
+# test = Encryptor.new("..en")                                   # => #<Encryptor:0x007fb9ba911fb0 @message=[".", ".", "e", "n"], @rotation=#<RotationGenerator:0x007fb9ba911ce0 @key="11425", @date=141215>>
+# test.create_character_map                                      # => ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", ".", ","]
+# test.find_message_character_values                             # => [37, 37, 4, 13]
+# test.character_value_into_groups_of_four                       # => [[37, 37, 4, 13]]
+# test.add_final_encryptor_values                                # => [15, 14, 9, 4]
+# test.encrypt_values_to_characters                              # => "poje"
