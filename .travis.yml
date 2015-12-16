@@ -1,4 +1,4 @@
 language: ruby
 script: bundle exec mrpsec --color
 rvm:
-  -2.2.1p85
+  - 2.2.1
