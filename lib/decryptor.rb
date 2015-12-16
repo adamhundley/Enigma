@@ -44,7 +44,7 @@ class Decryptor
         elsif index == 2
           c_final_value = value - rotation.c_rotation
           final_decryptor_values << c_final_value % 39
-        else index == 3
+        elsif index == 3
           d_final_value = value - rotation.d_rotation
           final_decryptor_values << d_final_value % 39
         end

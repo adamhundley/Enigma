@@ -3,7 +3,7 @@ require_relative 'decryptor'
 class Crack
   attr_reader :message, :ending, :character_map
 
-  def initialize(message, date)
+  def initialize(message, _date)
     @message = message.chars
     @ending = "..end..".chars
     @character_map = create_character_map
@@ -92,7 +92,7 @@ class Crack
         elsif index == 2
           c_final_value = value - key_c
           final_crack_values << c_final_value % 39
-        else index == 3
+        elsif index == 3
           d_final_value = value - key_d
           final_crack_values << d_final_value % 39
         end
@@ -108,7 +108,7 @@ class Crack
     final_crack.join
   end
 end
-
+# #
 # c = Crack.new("lxwc2y6u5n71k9mv93rv3", 000000)
 # c.find_message_character_values
 # c.count_in
