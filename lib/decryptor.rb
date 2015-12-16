@@ -1,14 +1,14 @@
 require_relative 'rotation_generator'
 
 class Decryptor
-  attr_reader :rotation
+  attr_reader :rotation, :message, :character_map
 
   def initialize(message, key, date)
     @message = message.chars
     @key = key
     @date = date
     @rotation = RotationGenerator.new(key, date)
-    create_character_map
+    @character_map  = create_character_map
   end
 
   def create_character_map
@@ -18,7 +18,7 @@ class Decryptor
   end
 
   def find_message_character_values
-    @message.map do |character|
+    message.map do |character|
       create_character_map.index(character)
     end
   end
@@ -53,15 +53,20 @@ class Decryptor
     final_decryptor_values
   end
 
-  def convert_values_to_letters
+  def convert_values_to_characters
     subtract_final_decryptor_values.map do |value|
       create_character_map[value]
     end
   end
+
+  def join_decrypted_characters_to_string
+    convert_values_to_characters.join
+  end
 end
 
-d = Decryptor.new("z9cnr8c421c4otw8r2", 11425, 141215)
+d = Decryptor.new("q0z075v0ptxm719f q mp,pgb6ug8", 30752, 141215)
 d.find_message_character_values
 d.character_value_into_groups_of_four
 d.subtract_final_decryptor_values
-d.convert_values_to_letters
+d.convert_values_to_characters
+d.join_decrypted_characters_to_string

@@ -36,23 +36,8 @@ class CrackTest < Minitest::Test
     assert_equal [15, 14, 9, 4, 20, 14, 3], c.find_message_character_values
   end
 
-  def test_it_subtracts_character_values_from_39
-    c = Crack.new("pojeuod", 141215)
-    assert_equal [2, 2, 35, 26], c.subtract_character_values_from_39
-  end
-
-  def test_it_adds_encrypted_values_to_subtracted_values
-    c = Crack.new("pojeuod", 141215)
-    assert_equal [17, 16, 44, 30], c.add_encrypted_values_to_subtracted_values
-  end
-
-  def test_it_subtracts_date_from_values
-    c = Crack.new("pojeuod", 141215)
-    assert_equal [11, 14, 3, 25], c.subtract_date_from_values
-  end
-
-  def test_it_can_create_key_from_values
-    c = Crack.new("pojeuod", 141215)
-    assert_equal 11425, c.create_key_from_values
+  def test_it_can_crack
+    c = Crack.new("2fxhgg7zj8861rn0nls0h", 161515)
+    assert_equal "this is a test..end..", c.join_cracked_characters_to_string
   end
 end
