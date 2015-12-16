@@ -19,8 +19,10 @@ class Enigma
 
 end
 
+
+
 e = Enigma.new
-message = "this is a test..end.."
-e.encrypt(message)
-e.decrypt("2fxhgg7zj8861rn0nls0h", 43523, 121515)
-e.crack("2fxhgg7zj8861rn0nls0h")
+message = "lets go lets go l e t s g o..end.."
+e.encrypt(message, 43521)
+e.decrypt("vc8fhe3xvc8fhe3xv8tx387xq83yic23i9", 43521)
+e.crack("vc8fhe3xvc8fhe3xv8tx387xq83yic23i9")
