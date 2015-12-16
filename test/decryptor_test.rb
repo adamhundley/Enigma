@@ -39,7 +39,7 @@ class DecryptorTest < Minitest::Test
     d = Decryptor.new("z9cnr8c421c4otw8r2", 11425, 141215)
 
     assert_equal [[25, 35, 2, 13], [17, 34, 2, 30], [28, 27, 2,
-      30],[14, 19, 22, 34], [17, 28]], d.character_value_into_groups_of_four
+      30],[14, 19, 22, 34], [17, 28]], d.split_character_value_into_groups_of_four
   end
 
   def test_it_can_subtract_final_decryptor_values
@@ -49,16 +49,18 @@ class DecryptorTest < Minitest::Test
       36, 3, 17, 4, 0, 12], d.subtract_final_decryptor_values
   end
 
-  def test_it_can_decrypt_to_chars
+  def test_it_can_pull_rotation_values_from_the_generator
     d = Decryptor.new("z9cnr8c421c4otw8r2", 11425, 141215)
 
-    assert_equal ["i", "t", " ", "w", "a", "s", " ", "a", "l", "l",
-      " ", "a", " ", "d", "r", "e", "a", "m"], d.convert_values_to_characters
+    assert_equal 17, d.rotation.a_rotation
+    assert_equal 16, d.rotation.b_rotation
+    assert_equal 44, d.rotation.c_rotation
+    assert_equal 30, d.rotation.d_rotation
   end
 
-  def test_it_can_decrypt_to_a_string
+  def test_it_can_decrypt
     d = Decryptor.new("z9cnr8c421c4otw8r2", 11425, 141215)
 
-    assert_equal "it was all a dream", d.join_decrypted_characters_to_string
+    assert_equal "it was all a dream", d.convert_values_to_characters
   end
 end

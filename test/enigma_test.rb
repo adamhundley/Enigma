@@ -1,4 +1,4 @@
-# require_relative 'test_helper'
+require_relative 'test_helper'
 require 'Minitest'
 require 'Minitest/pride'
 require 'Minitest/autorun'

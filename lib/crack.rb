@@ -1,12 +1,10 @@
 require_relative 'decryptor'
 
 class Crack
-  attr_reader :message, :ending, :date, :full_message, :character_map
+  attr_reader :message, :ending, :character_map
 
   def initialize(message, date)
-    @full_message = message
     @message = message.chars
-    @date = date.to_i
     @ending = "..end..".chars
     @character_map = create_character_map
   end
@@ -81,15 +79,7 @@ class Crack
     determine_rotation_values[3]
   end
 
-  # def create_rotation_keys
-  #   key = determine_rotation_values  # => [9, 37, 15, 28]
-  #   key_a = key[0]                   # => 9
-  #   key_b = key[1]                   # => 37
-  #   key_c = key[2]                   # => 15
-  #   key_d = key[3]                   # => 28
-  # end
-
-  def subtract_final_crack_values   # rotations = [keys, offsets].transpose.map {|rotation| rotation.reduce(:+)}
+  def subtract_final_crack_values
     final_crack_values = []
     character_value_into_groups_of_four.each do |group|
       group.each_with_index do |value, index|
@@ -112,27 +102,23 @@ class Crack
   end
 
   def convert_values_to_characters
-    subtract_final_crack_values.map do |value|
+    final_crack = subtract_final_crack_values.map do |value|
       character_map[value]
     end
-  end
-
-  def join_cracked_characters_to_string
-    convert_values_to_characters.join
+    final_crack.join
   end
 end
 
-c = Crack.new("h1sxkul2msy5fwlgg7yv3u103o", 000000)
-c.find_message_character_values
-c.count_in
-c.encrypted_character_values_of_the_end
-c.crack_cipher_character_values
-c.find_abcd_values
-c.determine_rotation_values
-c.key_a
-c.key_b
-c.key_c
-c.key_d
-c.subtract_final_crack_values
-c.convert_values_to_characters
-c.join_cracked_characters_to_string
+# c = Crack.new("lxwc2y6u5n71k9mv93rv3", 000000)
+# c.find_message_character_values
+# c.count_in
+# c.encrypted_character_values_of_the_end
+# c.crack_cipher_character_values
+# c.find_abcd_values
+# c.determine_rotation_values
+# c.key_a
+# c.key_b
+# c.key_c
+# c.key_d
+# c.subtract_final_crack_values
+# c.convert_values_to_characters
