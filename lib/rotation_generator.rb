@@ -43,9 +43,3 @@ class RotationGenerator
     d_key_rotation + date_offset[-1].to_i
   end
 end
-# #
-# r = RotationGenerator.new(69542, 141215)
-# r.a_rotation
-# r.b_rotation
-# r.c_rotation
-# r.d_rotation

@@ -13,14 +13,6 @@ class DecryptorTest < Minitest::Test
       "1", "c", "4", "o", "t", "w", "8", "r", "2"], d.message
   end
 
-  def test_it_created_character_map
-    d = Decryptor.new("z9cnr8c421c4otw8r2", 11425, 141215)
-
-    assert_equal ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
-      "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3",
-      "4", "5", "6", "7", "8", "9", " ", ".", ","], d.character_map
-  end
-
   def test_it_can_pull_an_index_from_the_character_map
     d = Decryptor.new("z9cnr8c421c4otw8r2", 11425, 141215)
 

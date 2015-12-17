@@ -53,5 +53,4 @@ class EnigmaTest < Minitest::Test
 
     assert_equal "this is a test..end..", e.crack(message, "141215")
   end
-
 end

@@ -3,21 +3,13 @@ require 'Minitest'
 require 'Minitest/pride'
 require 'Minitest/autorun'
 
-require_relative '../lib/crack'
+require_relative '../lib/cracker'
 
 class CrackTest < Minitest::Test
   def test_it_can_convert_encrypted_message_to_an_array_of_character_strings
     c = Crack.new("test", 141215)
 
     assert_equal ["t", "e", "s", "t"], c.message
-  end
-
-  def test_it_created_character_map
-    c = Crack.new("test", 141215)
-
-    assert_equal ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
-      "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3",
-      "4", "5", "6", "7", "8", "9", " ", ".", ","], c.character_map
   end
 
   def test_it_can_convert_character_strings_into_map_values

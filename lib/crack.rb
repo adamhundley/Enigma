@@ -8,4 +8,4 @@ cracked_message = Crack.new(encrypted_message, date).convert_values_to_character
 
 File.write(ARGV[1], cracked_message)
 
-puts "Created '#{ARGV[1]}' with the key  and date #{date}"
+puts "Cracked the message and created '#{ARGV[1]}' using #{date}"
