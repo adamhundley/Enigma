@@ -1,7 +1,7 @@
 require_relative 'test_helper'
-require 'Minitest'
-require 'Minitest/pride'
-require 'Minitest/autorun'
+require 'minitest'
+require 'minitest/pride'
+require 'minitest/autorun'
 
 require_relative '../lib/cracker'
 
@@ -55,19 +55,19 @@ class CrackTest < Minitest::Test
     assert_equal 31, c.key_a
   end
 
-  def test_it_can_determine_the_a_rotation
+  def test_it_can_determine_the_b_rotation
     c = Crack.new("lxwc2y6u5n71k9mv93rv3", 141215)
 
     assert_equal 16, c.key_b
   end
 
-  def test_it_can_determine_the_a_rotation
+  def test_it_can_determine_the_c_rotation
     c = Crack.new("lxwc2y6u5n71k9mv93rv3", 141215)
 
     assert_equal 14, c.key_c
   end
 
-  def test_it_can_determine_the_a_rotation
+  def test_it_can_determine_the_d_rotation
     c = Crack.new("lxwc2y6u5n71k9mv93rv3", 141215)
 
     assert_equal 23, c.key_d

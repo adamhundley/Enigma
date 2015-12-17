@@ -1,7 +1,7 @@
 require_relative 'test_helper'
-require 'Minitest'
-require 'Minitest/pride'
-require 'Minitest/autorun'
+require 'minitest'
+require 'minitest/pride'
+require 'minitest/autorun'
 
 require_relative '../lib/rotation_generator'
 
