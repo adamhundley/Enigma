@@ -1,4 +1,5 @@
 require_relative 'rotation_generator'
+require 'pry'
 
 class Encryptor
   attr_reader :message, :rotation, :character_map
@@ -60,7 +61,7 @@ class Encryptor
 end
 
 
-test = Encryptor.new("this is a test..end..", 69453, 151217)
+test = Encryptor.new("this is a test..end..", 69453, 161215)
 test.create_character_map
 test.find_message_character_values
 test.split_character_value_into_groups_of_four

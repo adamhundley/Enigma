@@ -1,5 +1,5 @@
 require_relative 'encryptor'
-require_relative 'crack'
+require_relative 'cracker'
 require_relative 'decryptor'
 
 class Enigma
@@ -13,7 +13,7 @@ class Enigma
   end
 
   def crack(message, date = Time.new.strftime("%d""%m""%y"))
-    Crack.new(message, date).convert_values_to_characters
+    Cracker.new(message, date).convert_values_to_characters
   end
 
 end

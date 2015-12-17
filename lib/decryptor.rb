@@ -60,9 +60,9 @@ class Decryptor
     final_message.join
   end
 end
-#
-# d = Decryptor.new("h1sxkul2msy5fwlgg7yv3u103o", 69453, 151217)
-# d.find_message_character_values
-# d.split_character_value_into_groups_of_four
-# d.subtract_final_decryptor_values
-# d.convert_values_to_characters
+
+d = Decryptor.new("xlprbifg7wwdxlprbiw0yvbocice0yheu", 94801, 161215)
+d.find_message_character_values
+d.split_character_value_into_groups_of_four
+d.subtract_final_decryptor_values
+d.convert_values_to_characters
