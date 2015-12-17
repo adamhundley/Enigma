@@ -31,7 +31,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitest
   mrspec
   pry
   simplecov
