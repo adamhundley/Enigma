@@ -1,7 +1,7 @@
 require_relative 'encryptor'
 
 message = File.read(ARGV[0]).chomp
-key = rand(0..99999)
+key = "%05d" % rand(0..99999)
 date = Time.new.strftime("%d""%m""%y")
 
 encrypted_message = Encryptor.new(message, key, date).encrypt_values_to_characters

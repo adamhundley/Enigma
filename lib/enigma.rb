@@ -3,7 +3,7 @@ require_relative 'cracker'
 require_relative 'decryptor'
 
 class Enigma
-  def encrypt(message, key = rand(0..99999), date = Time.new.strftime("%d""%m""%y"))
+  def encrypt(message, key = "%05d" % rand(0..99999), date = Time.new.strftime("%d""%m""%y"))
     Encryptor.new(message, key, date).encrypt_values_to_characters
   end
 
